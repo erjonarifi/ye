@@ -1,0 +1,822 @@
+/* Krejt Faqja */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body {
+    background-color: #f5f5f5;
+}
+
+/* topNav */
+
+.topNav {
+    width: 100%;
+    height: 50px;
+    background-color: #01131c;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.topNavMax {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    justify-content: end;
+    align-items: center;
+}
+
+.topUl {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    margin-left: 15px;
+}
+
+.topUl .separator {
+    color: gray;
+    margin: 0 15px;
+    font-size: 23px;
+}
+
+.topUl li {
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-right: 0;
+}
+
+.topUl a {
+    font-size: 20px;
+    color: gray;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s, filter 0.3s;
+}
+
+.topUl i, .topUl span {
+    margin-right: 5px;
+}
+
+.topUl i, .topUl span:last-child {
+    margin-right: 0;
+}
+
+#biger {
+    font-size: 20px;
+}
+
+.topUl li:hover a, .topUl li:hover a i, .topUl li:hover a span {
+    color: white;
+    filter: brightness(1);
+}
+
+/* Notification Styles */
+
+.notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #01131c;
+    color: #fff;
+    padding: 40px 30px;
+    border-radius: 8px;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.notification-close {
+    background: white;
+    border: none;
+    color: #01131c;
+    font-size: 24px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.notification-show {
+    display: block;
+}
+
+/* mainNav */
+
+.mainNav {
+    margin-top: 1px;
+    width: 100%;
+    height: 80px;
+    background-color: #01131c;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.mainNavMax {
+    width: 100%;
+    max-width: 1200px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+
+.logo {
+    width: 140px;
+    margin-left: 20px;
+}
+
+#menu {
+    display: none;
+}
+
+.mainUl {
+    display: flex;
+}
+
+.mainUl li {
+    margin-right: 30px;
+    list-style: none;
+}
+
+.mainUl li:last-child {
+    margin-right: 20px;
+}
+
+.mainUl a {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-family: "Inter", sans-serif;
+    transition: color 0.3s;
+}
+
+.mainUl a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: red;
+    bottom: -5px;
+    left: 50%;
+    transition: all 0.3s;
+}
+
+.mainUl a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Mobile Menu Styles */
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Initially positioned off-screen (100% of its width) */
+    width: 300px; /* Width of the mobile menu */
+    height: 100%; /* Full height of the viewport */
+    background-color: #01131c;
+    z-index: 999;
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: flex-start; /* Align items to the top */
+    transition: right 0.3s;
+}
+
+.mobileMenu.open {
+    right: 0; /* Slide into view */
+}
+
+/* Close Button */
+#closeMenu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Mobile Ul */
+.mobileUl {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+    margin-top: 65px; /* Adjust margin to position it higher */
+    margin-left: 30px; /* Adjust margin to position it more to the left */
+}
+
+.mobileUl li {
+    margin-bottom: 30px;
+    list-style: none;
+}
+
+.mobileUl a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: "Inter", sans-serif;
+    position: relative;
+}
+
+.mobileUl a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: red;
+    bottom: -5px;
+    left: 50%;
+    transition: all 0.3s;
+}
+
+.mobileUl a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Mobile Menu Extra Styles */
+.mobileMenuExtra {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Initially positioned off-screen (100% of its width) */
+    width: 300px; /* Width of the mobile menu */
+    height: 100%; /* Full height of the viewport */
+    background-color: #01131c;
+    z-index: 999;
+    display: flex;
+    flex-direction: column; /* Change direction to column */
+    justify-content: flex-start; /* Center content vertically */
+    align-items: start; /* Center content horizontally */
+    transition: right 0.3s;
+}
+
+.mobileMenuExtra.open {
+    right: 0; /* Slide into view */
+}
+
+/* Close Button */
+#closeMenuExtra {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Mobile Ul Extra */
+.mobileUlExtra {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+    margin-top: 65px; /* Adjust margin to position it higher */
+    margin-left: 30px; /* Adjust margin to position it more to the left */
+}
+
+.mobileUlExtra li {
+    margin-bottom: 30px;
+    list-style: none;
+}
+
+.mobileUlExtra a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: "Inter", sans-serif;
+    position: relative;
+}
+
+.mobileUlExtra a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: red;
+    bottom: -5px;
+    left: 50%;
+    transition: all 0.3s;
+}
+
+.mobileUlExtra a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.line {
+    width: 260px;
+    height: 1px;
+    background-color: white;
+    margin: 0px 0px 0px 20px; /* Optional: Add margin for spacing */
+}
+
+.mrena {
+    display: block;
+    height: 100px;
+    width: 100%;
+}
+
+.mrenaa {
+    margin-top: 30px;
+    width: 100%;
+    height: auto;
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.mrenaa li {
+    list-style: none;
+    margin-top: 20px;
+    margin-left: 25px;
+    align-items: center;
+    display: flex;
+}
+
+.mrenaa a {
+    font-size: 20px;
+    font-family: "Inter", sans-serif;
+    text-decoration: none;
+    color: gray;
+    display: flex;
+    align-items: center;
+    transition: box-shadow 0.3s, color 0.3s;
+}
+
+.mrenaa span {
+    font-size: 25px;
+}
+
+#bigerr {
+    font-size: 25px;
+}
+
+.ni {
+    display: flex;
+    margin-left: 5px;
+}
+
+.mrenaa a:hover {
+    color: white;
+}
+
+
+
+/* -------------------- FRONT ----------------------- */
+
+.front {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right top, #171313, #730e09);
+}
+
+.fronti {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+
+.texti {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+
+.texti .tre p, p {
+    font-family: "Merriweather Sans", sans-serif;
+    font-size: 2rem;
+    color: white;
+    font-weight: 400;
+}
+
+.kerriFront {
+    width: 100%;
+    height: auto;
+    position: relative;
+
+    padding-right: 20px;
+}
+
+.tre {
+    display: flex;
+}
+
+.dysh {
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-bottom: 65px;
+}
+
+.smund {
+    margin-top: 100px;
+    margin-left: 20px;
+    display: flex;
+    top: 20px;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+.smund a {
+    color: #7a4ad4;
+}
+
+/* ----------- SEARCH BAR -------------- */
+
+.ser {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+}
+
+.wrapper{
+    width: 100%;
+  }
+  
+  .wrapper .search-input{
+    background: #fff;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12);
+  }
+  
+  .search-input input{
+    height: 55px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 0 60px 0 20px;
+    font-size: 18px;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+  }
+  
+  .search-input.active input{
+    border-radius: 5px 5px 0 0;
+  }
+  
+  .search-input .autocom-box{
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+  
+  .search-input.active .autocom-box{
+    padding: 10px 8px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .autocom-box li{
+    list-style: none;
+    padding: 8px 12px;
+    display: none;
+    width: 100%;
+    cursor: default;
+    border-radius: 3px;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .search-input.active .autocom-box li{
+    display: block;
+  }
+  .autocom-box li:hover{
+    background: #efefef;
+  }
+  
+  .search-input .icon{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 55px;
+    width: 55px;
+    text-align: center;
+    line-height: 55px;
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+  }
+  
+.wrapper input::placeholder {
+    color: #333;
+    font-size: 18px;
+}
+
+/* --------------------------- MAX G ----------------------- */
+
+.maxG {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.minG {
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    gap: 10px;
+}
+
+.grid-item {
+    background-color: #ccc;
+    text-align: center;
+    line-height: 1.5;
+    font-size: 1.5rem;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.2s ease-in-out; /* Smooth transition for box-shadow */
+}
+
+/* Responsive height equal to width */
+.grid-item::before {
+    content: "";
+    display: block;
+    padding-top: 100%; /* Makes the height equal to the width */
+}
+
+/* Hover effect with border shadow */
+.grid-item:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3); /* Adjust shadow as needed */
+}
+
+/* ---------------------- MEDIA QUERIES ---------------------------*/
+
+@media (max-width: 3840px) {}
+
+@media (max-width: 2560px) {}
+
+@media (max-width: 1920px) {}
+
+@media (max-width: 1600px) {}
+
+@media (max-width: 1440px) {}
+
+@media (max-width: 1366px) {}
+
+@media (max-width: 1280px) {}
+
+@media (max-width: 1080px) {
+    .dysh,
+    .frontKerri {
+        width: 100%;
+    }
+
+    .texti {
+        margin-bottom: 20px;
+    }
+    .texti .tre p, p {
+        font-size: 1.8rem;
+    }
+    .fronti {
+        height: 400px;
+    }
+    .smund {
+        width: 400px;
+    }
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 834px) {
+    .dysh,
+    .frontKerri {
+        width: 100%;
+    }
+
+    .texti {
+        margin-bottom: 20px;
+    }
+    .texti .tre p, p {
+        font-size: 1.6rem;
+    }
+    .fronti {
+        height: 350px;
+    }
+}
+
+@media (max-width: 800px) {}
+
+@media (max-width: 768px) {
+    .texti .tre p, p {
+        font-size: 2rem;
+    }
+
+    .fronti {
+        grid-template-columns: 1fr; /* Stack columns vertically on smaller screens */
+        height: auto; /* Allow height to adjust based on content */
+    }
+
+    .dysh,
+    .frontKerri {
+        position: relative;
+        width: 100%; /* Full width for both sides */
+    }
+
+    .dysh {
+        margin-bottom: 20px;
+    }
+
+    .ser {
+        position: relative;
+        margin-right: 20px;
+        padding-right: 20px;
+    }
+
+    .icon {
+        position: relative;
+        margin-right: 20px;
+    }
+
+    .kerriFront {
+        position: relative;
+        width: 90%;
+        padding-left: 10%;
+    }
+
+    .texti {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 720px) {
+    #menu {
+        display: flex;
+        color: white;
+        font-size: 10px;
+        margin-right: 20px;
+        cursor: pointer;
+        position: relative;
+    }
+    #mat {
+        font-size: 26px;
+    }
+    .topUl a {
+        font-size: 26px;
+    }
+    .topUl .separator {
+        font-size: 28px;
+    }
+    #biger {
+        font-size: 25px;
+    }
+    .mainUl {
+        display: none;
+    }
+
+    #menu {
+        display: block;
+        margin-right: 20px;
+        font-size: 36px;
+        cursor: pointer;
+        color: white;
+    }
+    .mobileMenu {
+        display: block;
+    }
+    .mobileMenuExtra {
+        display: none;
+    }
+    .smund {
+        margin-top: 25px;
+        width: 491px;
+    }
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {}
+
+@media (max-width: 600px) {}
+
+@media (max-width: 540px) {
+    .smund {
+        margin-top: 30px;
+        width: 400px;
+    }
+    .texti .tre p, p {
+        font-size: 1.8rem;
+    }
+
+    .fronti {
+        grid-template-columns: 1fr; /* Stack columns vertically on smaller screens */
+        height: auto; /* Allow height to adjust based on content */
+    }
+
+    .dysh,
+    .frontKerri {
+        position: relative;
+        width: 100%; /* Full width for both sides */
+    }
+
+    .dysh {
+        margin-bottom: 20px;
+    }
+
+    .ser {
+        position: relative;
+        margin-right: 20px;
+        padding-right: 20px;
+    }
+
+.icon {
+    position: relative;
+    margin-right: 20px;
+}
+
+    .kerriFront {
+        position: relative;
+        width: 100%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .texti {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .topNav {
+        display: none;
+    }
+    .mobileMenu {
+        display: none;
+    }
+    .mobileMenuExtra {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .smund {
+        margin-top: 30px;
+        width: 380px;
+    }
+}
+
+@media (max-width: 414px) {
+    .smund {
+        margin-top: 30px;
+        width: 320px;
+    }
+}
+
+@media (max-width: 375px) {
+    .texti .tre p, p {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .texti .tre p, p {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .texti .tre p, p {
+        font-size: 1.4rem;
+    }
+    .smund {
+        margin-top: 20px;
+        width: 280px;
+    }
+}
